@@ -1,6 +1,9 @@
 import os
 import random
 
+def header():
+    print("Developed by Douglas Bernardino.\nContact me: <dougl4s.viana@gmail.com>.\n")
+
 def clear_screen():
     os.system("cls")
 
@@ -123,7 +126,7 @@ def play(db_name):
 def getch():
     q = 'x'
     while q =='x':
-        q = input("Press any key!")
+        q = input("Press any key...")
 
 def select_menu():
     option = input("\n:: Choose a option ::\n\n 1. Play game\n 2. Add word\n 3. Delete word\n 4. Show current user word list\n E. Exit\n\n>> ")
@@ -134,6 +137,8 @@ def select_menu():
         print("\nInvalid input!\n")
     
 def main(user):
+    header()
+    
     if (db_check(user) == 0):
         var_database = open(user, 'w')
         var_database.close()
@@ -148,7 +153,8 @@ def main(user):
         elif option == '2': # Caso 2: Adicionar palavra
             while True:
                 clear_screen()
-                word_to_add = get_word("Enter the word in format [cat,gato] or press F to return to main menu: ")
+                word_to_add = get_word("Enter the word in format [cat,gato]\nor press F to return to main menu:\n\n>> ")
+                print('')
                 if word_to_add not in ['f', 'F']:
                     add_word(user, word_to_add)
                 else:
@@ -159,7 +165,7 @@ def main(user):
             while True:
                 clear_screen()
                 show_list(user)
-                word_to_del = get_word("Enter the word to delete in format [cat,gato] or press F to return to main menu: ")
+                word_to_del = get_word("Enter the word to delete in format [cat,gato]\nor press F to return to main menu:\n\n>> ")
                 if word_to_del not in ['f', 'F']:
                     delete_word(user, word_to_del)
                 else:
@@ -175,8 +181,8 @@ def main(user):
             print("Bye!")
             break
             return 1
-        
-user = nomarlize_word(str(input("\nUser: ")))
+header()        
+user = nomarlize_word(str(input("User: ")))
 print("\nHello, %s!\n" %user)
 getch()
 
