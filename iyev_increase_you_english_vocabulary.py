@@ -120,6 +120,11 @@ def play(db_name):
             print("Incorrect!")
             return 0
 
+def getch():
+    q = 'x'
+    while q =='x':
+        q = input("Press any key!")
+
 def select_menu():
     option = input("\n:: Choose a option ::\n\n 1. Play game\n 2. Add word\n 3. Delete word\n 4. Show current user word list\n E. Exit\n\n>> ")
     print("")
@@ -163,6 +168,7 @@ def main(user):
         elif option == '4': # Caso 4: Mostrar lista de palavras
             clear_screen()
             show_list(user)
+            getch()
             
         else: # Caso E/e: Sair
             clear_screen()
@@ -171,10 +177,7 @@ def main(user):
             return 1
         
 user = nomarlize_word(str(input("\nUser: ")))
-print("\nHello, %s!" %user)  
+print("\nHello, %s!\n" %user)
+getch()
+
 main(user)
-
-
-
-
-
